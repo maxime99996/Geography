@@ -67,15 +67,30 @@ function getContinents()
  * @param int $num L'ID de la capitale.
  * @return string Le nom de la capitale.
  */
-function getCapital($num)
-{
+function getCapitale($num) {
     global $pdo;
-    $query = 'SELECT Name FROM City WHERE id = :num;';
+    $query = 'SELECT DISTINCT Name FROM City WHERE id = :num;';
     $prep = $pdo->prepare($query);
     $prep->bindValue(':num', $num, PDO::PARAM_INT);
     $prep->execute();
 
+    $result = $prep->fetch(PDO::FETCH_ASSOC);
+    if ($result) {
+        return $result['Name'];
+    }
+    else {
+        return 'Inconnu';
+    }
+}
+
+function getDetails($name)
+{
+    global $pdo;
+    $query = 'SELECT * FROM Country WHERE Name = :nom;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':nom', $name, PDO::PARAM_INT);
+    $prep->execute();
     $result = $prep->fetch();
-    return $prep->FetchAll();
+    return $result;
 }
 

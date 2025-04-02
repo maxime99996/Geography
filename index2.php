@@ -30,38 +30,34 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
 ?>
 
 <main role="main" class="flex-shrink-0">
+
   <div class="container">
     <h1>Les pays en <?= $continent; ?></h1>
     <div>
       <table class="table">
          <tr>
+         <th>drapeau</th>
            <th>Nom</th>
            <th>Population</th>
            <th>Continent</th>
            <th>Capitale</th>
          </tr>
        <?php
-          // Parcours des pays pour afficher les informations
           foreach ($desPays as $pays) {
        ?>
           <tr>
-            <td> <?php echo $pays->Name ?></td>
+            <td> <?php $source=strtolower($pays ->Code2).".png"; ?>
+              <img src="images/flag/<?= $source;?>" height="60" width="90"></td>
+           <td><a href="detailsPays.php?name=<?= $pays->Name ; ?>"><?= $pays->Name; ?></a></td>
             <td> <?php echo $pays->Population ?></td>
             <td> <?php echo $pays->Continent ?></td>
-            <td> <?php echo getCapital($pays->Capitale) ?></td>  <!-- Affichage de la capitale -->
-          </tr>
+            <td> <?php echo getCapital($pays->Capital) ?></td>
+           </tr>
         <?php } ?>
      </table>
     </div>
 
     <!-- Affichage du débogage pour mieux comprendre la structure des données -->
-    <p>
-    <code>
-      <?php
-        var_dump($desPays);  // Affiche la structure des données pour le débogage
-      ?>
-    </code>
-    </p>
   </div>
 </main>
 
