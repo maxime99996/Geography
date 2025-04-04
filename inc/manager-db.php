@@ -94,3 +94,12 @@ function getDetails($name)
     return $result;
 }
 
+function getlangues($langue)
+{
+    global $pdo;
+    $query = 'SELECT Country.name AS Pays, Language.name AS Langue, CountryLanguage.Percentage FROM Country JOIN CountryLanguage ON Country.id = CountryLanguage.idcountry JOIN Language ON Language.id = CountryLanguage.idlanguage;';
+    $prep = $pdo->prepare($query);
+    $prep->execute();
+    $result = $prep->fetch();
+    return $result;
+}

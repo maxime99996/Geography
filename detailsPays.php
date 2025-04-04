@@ -19,7 +19,6 @@ require_once 'inc/manager-db.php';
 if (isset($_GET['name']) && !empty($_GET['name']) ){
   $name = ($_GET['name']);
   $pays = getDetails($name);
-  var_dump($pays);
   }
   
 ?>
@@ -35,9 +34,9 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
      <table class="table table-bordered">
             <tr><th>Code</th><td><?= $pays->Code; ?></td></tr>
             <tr><th>Continent</th><td><?= $pays->Continent; ?></td></tr>
-            <tr><th>Capitale</th><td><?= getCapitale($pays->Capitale); ?></td></tr>
+            <tr><th>Capitale</th><td><?= getCapitale($pays->Capital); ?></td></tr>
             <tr><th>Population</th><td><?= $pays->Population; ?></td></tr>
-            <tr><th>Superficie</th><td><?= $pays->Superficie; ?> km²</td></tr>
+            <tr><th>Superficie</th><td><?= $pays->SurfaceArea; ?> km²</td></tr>
      </table>
     </div>
   </div>
@@ -48,7 +47,7 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
         <table class="table table-striped">
             <tr><th>Nom</th><th>Pourcentage</th></tr>
             <?php foreach ($data['langues'] as $langue): ?>
-                <tr><td><?= $langue['nom'] ?></td><td><?= $langue['pourcentage'] ?>%</td></tr>
+                <tr><td><?= $langue['nom'] ?></td><td><?= $langue['percentage'] ?>%</td></tr>
             <?php endforeach; ?>
         </table>
         <h4 class="mt-4">Données économiques et sociales</h4>

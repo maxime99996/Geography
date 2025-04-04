@@ -51,7 +51,7 @@ if (isset($_GET['name']) && !empty($_GET['name']) ){
            <td><a href="detailsPays.php?name=<?= $pays->Name ; ?>"><?= $pays->Name; ?></a></td>
             <td> <?php echo $pays->Population ?></td>
             <td> <?php echo $pays->Continent ?></td>
-            <td> <?php echo getCapital($pays->Capital) ?></td>
+            <td> <?php echo getCapitale($pays->Capital) ?></td>
            </tr>
         <?php } ?>
      </table>

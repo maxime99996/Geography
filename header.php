@@ -31,14 +31,14 @@ $lesPays = getAllCountries();
       text-anchor: middle;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 500px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
     }
 
     .dropdown-menu{
-      max-height: 400px;
+      max-height: 300px;
       overflow-y: auto;
     }
   </style>
